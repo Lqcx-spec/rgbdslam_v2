@@ -3,7 +3,8 @@ cmake_policy(SET CMP0003 NEW)
 #########################################################
 ### USER CONFIG #########################################
 #########################################################
-set(USE_SIFT_GPU  1 CACHE BOOL "build with support for siftgpu") 
+add_compile_options(-std=c++11)
+set(USE_SIFT_GPU  0 CACHE BOOL "build with support for siftgpu") 
 if (${USE_SIFT_GPU})
   message(STATUS "SiftGPU library will be used")
 else (${USE_SIFT_GPU})
@@ -76,7 +77,7 @@ link_directories(${catkin_LIBRARY_DIRS})
 # Required 3rd party
 ####################################################
 # PCL #######################
-find_package(PCL 1.7 REQUIRED COMPONENTS common io)
+find_package(PCL 1.8 REQUIRED COMPONENTS common io)
 include_directories(SYSTEM ${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
